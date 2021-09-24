@@ -11,6 +11,10 @@ import { NavigationComponent } from './core/navigation/navigation.component';
 import { ShellComponent } from './core/shell/shell.component';
 import { ProductsOverviewComponent } from './pharmacy-products/products-overview/products-overview.component';
 import { ProductDetailsComponent } from './pharmacy-products/product-details/product-details.component';
+import { StoreModule } from '@ngrx/store';
+import { productReducer } from './pharmacy-products/store/products.reducers';
+import { ProductsEffects } from './pharmacy-products/store/products.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,14 @@ import { ProductDetailsComponent } from './pharmacy-products/product-details/pro
   imports: [
     BrowserModule,
     NoopAnimationsModule,
+    StoreModule.forRoot({
+      products: productReducer
+
+    }),
+    EffectsModule.forRoot([
+      ProductsEffects,
+      
+    ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25
     }),
