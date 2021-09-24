@@ -1,6 +1,16 @@
-<mat-sidenav-container class="sidenav-container" autosize>
-  <mat-sidenav #sidenav [disableClose]="true" class="sidenav-content" mode="side" opened="true">
-
-  </mat-sidenav>
-
-</mat-sidenav-container>
+<section class="sidenav-container">
+  <mat-sidenav-container class="sidenav" autosize>
+    <mat-sidenav [disableClose]="true" class="sidenav-content" mode="side" opened="true">
+      <mat-nav-list class="dashboard" [disableRipple]="true">
+        <a class="sidenav-item" mat-list-item (click)="isExpanded = !isExpanded">
+          <mat-icon class="sidenav-icon" mat-list-icon>menu</mat-icon>
+          <p class="sidenav-title" matLine *ngIf="isExpanded">KORDEUS TIME</p>
+        </a>
+        <a class="sidenav-item" mat-list-item (click)="isExpanded = !isExpanded">
+          <mat-icon class="sidenav-icon" mat-list-icon>menu</mat-icon>
+          <p class="sidenav-title" matLine *ngIf="isExpanded">KORDEUS TIME</p>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</section>

@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './navigation.component.html',
 })
 export class NavigationComponent implements OnInit {
+  isExpanded: boolean = false;
 
   constructor() { }
 

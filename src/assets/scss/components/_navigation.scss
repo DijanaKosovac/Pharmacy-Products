@@ -1,0 +1,14 @@
+.sidenav-container {
+  @include flexbox(none, none, column);
+  position: absolute;
+  inset: 0;
+  text-transform: uppercase;
+
+  .sidenav-item {
+    @include flexbox(none, none, column);
+  }
+
+  .mat-list-base {
+    padding-top: 0;
+  }
+}
