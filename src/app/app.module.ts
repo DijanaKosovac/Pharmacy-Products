@@ -9,12 +9,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './core/navigation/navigation.component';
 import { ShellComponent } from './core/shell/shell.component';
+import { ProductsOverviewComponent } from './pharmacy-products/products-overview/products-overview.component';
+import { ProductDetailsComponent } from './pharmacy-products/product-details/product-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    ShellComponent
+    ShellComponent,
+    ProductsOverviewComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
