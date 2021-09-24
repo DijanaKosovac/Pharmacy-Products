@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-shell',
+  selector: 'phar-shell',
   templateUrl: './shell.component.html'
 })
 export class ShellComponent implements OnInit {
