@@ -4,11 +4,15 @@
       <mat-nav-list class="dashboard" [disableRipple]="true">
         <a class="sidenav-item" mat-list-item (click)="isExpanded = !isExpanded">
           <mat-icon class="sidenav-icon" mat-list-icon>menu</mat-icon>
-          <p class="sidenav-title" matLine *ngIf="isExpanded">KORDEUS TIME</p>
+          <p class="sidenav-title" matLine *ngIf="isExpanded">Menu</p>
         </a>
-        <a class="sidenav-item" mat-list-item (click)="isExpanded = !isExpanded">
-          <mat-icon class="sidenav-icon" mat-list-icon>menu</mat-icon>
-          <p class="sidenav-title" matLine *ngIf="isExpanded">KORDEUS TIME</p>
+        <a class="sidenav-item" mat-list-item>
+          <mat-icon class="sidenav-icon" mat-list-icon>medication</mat-icon>
+          <p class="sidenav-title" matLine *ngIf="isExpanded">Products</p>
+        </a>
+        <a class="sidenav-item" mat-list-item>
+          <mat-icon class="sidenav-icon" mat-list-icon>info</mat-icon>
+          <p class="sidenav-title" matLine *ngIf="isExpanded">About</p>
         </a>
       </mat-nav-list>
     </mat-sidenav>
