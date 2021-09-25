@@ -1,0 +1,31 @@
+.edit-button {
+  @include button(110px, $main, $white);
+}
+
+.delete-button {
+  @include button(110px, $red, $white);
+}
+
+.mat-fab.mat-accent {
+  background-color: $white;
+}
+
+.add-button-container {
+  position: fixed;
+  right: 100px;
+  bottom: 30px;
+
+  button {
+    width: 70px;
+    height: 70px;
+  }
+
+  mat-icon {
+    display: block;
+    width: 35px;
+    height: 35px;
+    font-size: 35px;
+    line-height: 35px;
+    font-weight: 900;
+  }
+}

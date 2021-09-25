@@ -3,3 +3,10 @@
   justify-content: $justify;
   align-items: $align;
 }
+
+@mixin button($width, $backgroundColor, $color) {
+  width: $width;
+  background-color: $backgroundColor;
+  color: $color;
+  outline: none;
+}

@@ -1,1 +1,26 @@
-<p>products-overview works!</p>
+<section class="product-overview">
+  <div *ngFor="let product of products">
+    <mat-card class="product">
+      <mat-card-title-group>
+        <mat-card-title>{{ product?.name }}</mat-card-title>
+        <mat-card-subtitle>{{ product?.manufacturer }}</mat-card-subtitle>
+      </mat-card-title-group>
+      <mat-card-content>
+        <p>{{ product?.expiryDate }}</p>
+        <p>{{ product?.price }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button class="edit-button" mat-raised-button>Edit</button>
+        <button class="delete-button" mat-raised-button>Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>
+
+<div class="add-button-container">
+  <a>
+    <button mat-fab>
+      <mat-icon>add</mat-icon>
+    </button>
+  </a>
+</div>
