@@ -1,1 +1,31 @@
-<p>product-details works!</p>
+<section class="main-container">
+  <h2>Product Details Form</h2>
+  <form class="form-details">
+    <mat-form-field class="details-form-field" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field class="details-form-field" appearance="outline">
+      <mat-label>Manufacturer</mat-label>
+      <input matInput autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field class="details-form-field" appearance="outline">
+      <mat-label>Price</mat-label>
+      <input matInput autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field class="details-form-field" appearance="outline">
+      <mat-label>Expiry Date</mat-label>
+      <input matInput [matDatepicker]="expiryDate" autocomplete="off">
+      <mat-datepicker-toggle matSuffix [for]="expiryDate"></mat-datepicker-toggle>
+      <mat-datepicker #expiryDate></mat-datepicker>
+    </mat-form-field>
+  </form>
+
+  <div class="action-buttons-container">
+    <button mat-raised-button class="save-button">Save</button>
+    <button mat-raised-button class="cancel-button" (click)="cancel()">Cancel</button>
+  </div>
+</section>

@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsOverviewComponent } from './pharmacy-products/products-overview/products-overview.component';
+import { ProductDetailsComponent } from './pharmacy-products/product-details/product-details.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/products/overview', pathMatch: 'full' },
-  { path: 'products-overview', component: ProductsOverviewComponent },
+  { path: '', redirectTo: 'overview', pathMatch: 'full' },
+  { path: 'overview', component: ProductsOverviewComponent },
+  { path: 'details/:id', component: ProductDetailsComponent },
+  { path: '**', redirectTo: 'products/overview' }
 
 ];
 @NgModule({

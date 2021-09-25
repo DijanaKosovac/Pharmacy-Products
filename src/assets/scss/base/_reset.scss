@@ -8,6 +8,17 @@ body {
   letter-spacing: 1px;
 }
 
+.main-container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2,
+.mat-icon {
+  color: $main;
+}
+
 .mat-icon {
   color: $main;
 }

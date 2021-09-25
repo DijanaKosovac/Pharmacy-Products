@@ -1,9 +1,9 @@
-.edit-button {
+.save-button {
   @include button(110px, $main, $white);
 }
 
-.delete-button {
-  @include button(110px, $red, $white);
+.cancel-button {
+  @include button(110px, $white, $main);
 }
 
 .mat-fab.mat-accent {

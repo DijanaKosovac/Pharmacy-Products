@@ -1,0 +1,18 @@
+.main-container {
+  .form-details {
+    @include flexbox(space-between, center, row);
+
+    .details-form-field {
+      width: 48%;
+    }
+  }
+
+  .action-buttons-container {
+    @include flexbox(flex-end, center, row);
+    margin-top: 10px;
+
+    .cancel-button {
+      margin-left: 15px;
+    }
+  }
+}

@@ -2,6 +2,7 @@
   display: flex;
   justify-content: $justify;
   align-items: $align;
+  flex-wrap: wrap;
 }
 
 @mixin button($width, $backgroundColor, $color) {
