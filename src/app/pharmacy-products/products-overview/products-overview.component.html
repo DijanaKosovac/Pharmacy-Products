@@ -1,26 +1,27 @@
-<section class="product-overview">
-  <div *ngFor="let product of products">
-    <mat-card class="product">
-      <mat-card-title-group>
-        <mat-card-title>{{ product?.name }}</mat-card-title>
-        <mat-card-subtitle>{{ product?.manufacturer }}</mat-card-subtitle>
-      </mat-card-title-group>
-      <mat-card-content>
-        <p>{{ product?.expiryDate }}</p>
-        <p>{{ product?.price }}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button class="edit-button" mat-raised-button>Edit</button>
-        <button class="delete-button" mat-raised-button>Delete</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-</section>
+<mat-table>
 
-<div class="add-button-container">
-  <a>
-    <button mat-fab>
-      <mat-icon>add</mat-icon>
-    </button>
-  </a>
-</div>
+  <ng-container matColumnDef="name">
+    <mat-header-cell class="table-header" *matHeaderCellDef mat-sort-header>Name
+    </mat-header-cell>
+    <mat-cell *matCellDef="let product"> {{ product.name }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="manufacturer">
+    <mat-header-cell class="table-header" *matHeaderCellDef mat-sort-header>Manufacturer
+    </mat-header-cell>
+    <mat-cell *matCellDef="let product"> {{ product.manufacturer }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell class="table-header" *matHeaderCellDef mat-sort-header>Price
+    </mat-header-cell>
+    <mat-cell *matCellDef="let product"> {{ product.price }}
+    </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

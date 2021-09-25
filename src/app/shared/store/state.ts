@@ -1,5 +1,5 @@
 import { createSelector } from "@ngrx/store";
-import { IProductState } from "src/app/pharmacy-products/model/product";
+import { IProductState } from "src/app/pharmacy-products/model/product-state";
 
 export interface AppState {
   products: IProductState;

@@ -1,5 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
-import { IProduct, IProductState } from "../model/product";
+import { IProduct } from "src/app/shared/models/product";
+import { IProductState } from "../model/product-state";
 import { GET_PRODUCTS_SUCCESS } from "./products.actions";
 
 export const initialState: IProductState = {

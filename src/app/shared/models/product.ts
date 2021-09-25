@@ -10,7 +10,3 @@ export interface IManufacturer {
   id: string;
   name: string;
 }
-
-export interface IProductState {
-  productsList: IProduct[];
-}
