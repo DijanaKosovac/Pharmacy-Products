@@ -7,4 +7,5 @@ export interface AppState {
 
 export const selectProducts = (state: AppState) => state.products;
 export const selectProductsList = createSelector(selectProducts, (state: IProductState) => state.productsList);
+export const selectProduct = createSelector(selectProducts, (state: IProductState) => state.product);
 

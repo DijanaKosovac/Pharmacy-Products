@@ -23,16 +23,23 @@ export class ProductsOverviewComponent implements OnInit {
     'expiryDate',
   ];
 
-  constructor(private productService: ProductsService, private store: Store<AppState>,) { }
+  constructor(private productService: ProductsService, private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.store.dispatch(GET_PRODUCTS());
     this.getProducts();
   }
 
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+
   getProducts() {
     this.store.select(selectProductsList).pipe(takeUntil(this.ngUnsubscribe)).subscribe(data => {
-      this.listData = new MatTableDataSource(data);
+      if (data.length) {
+        this.listData = new MatTableDataSource(data);
+      }
     })
   }
 
