@@ -19,6 +19,9 @@ import { ProductDetailsComponent } from './pharmacy-products/product-details/pro
 import { StoreModule } from '@ngrx/store';
 import { productReducer } from './pharmacy-products/store/products.reducers';
 import { ProductsEffects } from './pharmacy-products/store/products.effects';
+// Services
+import { ProductsService } from './pharmacy-products/products.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,7 @@ import { ProductsEffects } from './pharmacy-products/store/products.effects';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [ProductsService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

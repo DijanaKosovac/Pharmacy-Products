@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,8 +10,11 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ParseDatePipe } from './pipes/parse-date.pipe';
 @NgModule({
-  declarations: [],
+  declarations: [
+    ParseDatePipe
+  ],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -23,7 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     FormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   exports: [
     MatSidenavModule,
@@ -35,7 +38,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     FormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ParseDatePipe
   ]
 })
 export class SharedModule { }

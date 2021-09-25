@@ -1,30 +1,42 @@
-<mat-table class="main-container">
+<mat-table class="main-container" [dataSource]="listData">
+
+  <ng-container matColumnDef="options">
+    <mat-header-cell *matHeaderCellDef class="table-header"> Options </mat-header-cell>
+    <mat-cell class="table-cell" *matCellDef="let info">
+      <div class="info-menu">
+        <a [routerLink]="['../details', info.id]">
+          <mat-icon class="edit">edit</mat-icon>
+        </a>
+        <mat-icon class="delete" (click)="deleteProduct(info.id)">delete</mat-icon>
+      </div>
+    </mat-cell>
+  </ng-container>
 
   <ng-container matColumnDef="name">
     <mat-header-cell class="table-header" *matHeaderCellDef mat-sort-header>Name
     </mat-header-cell>
-    <mat-cell *matCellDef="let product"> {{ product.name }}
+    <mat-cell *matCellDef="let product"> {{ product?.name }}
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="manufacturer">
     <mat-header-cell class="table-header" *matHeaderCellDef mat-sort-header>Manufacturer
     </mat-header-cell>
-    <mat-cell *matCellDef="let product"> {{ product.manufacturer }}
+    <mat-cell *matCellDef="let product"> {{ product?.manufacturer.name }}
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="price">
     <mat-header-cell class="table-header" *matHeaderCellDef mat-sort-header>Price
     </mat-header-cell>
-    <mat-cell *matCellDef="let product"> {{ product.price }}
+    <mat-cell *matCellDef="let product"> {{ product?.price }}e
     </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="expiryDate">
     <mat-header-cell class="table-header" *matHeaderCellDef mat-sort-header>Expiry Date
     </mat-header-cell>
-    <mat-cell *matCellDef="let product"> {{ product.expiryDate }}
+    <mat-cell *matCellDef="let product"> {{ product?.expiryDate| parseDate }}
     </mat-cell>
   </ng-container>
 

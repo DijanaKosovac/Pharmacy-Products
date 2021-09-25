@@ -3,29 +3,31 @@
   <form class="form-details">
     <mat-form-field class="details-form-field" appearance="outline">
       <mat-label>Name</mat-label>
-      <input matInput autocomplete="off">
+      <input matInput autocomplete="off" [(ngModel)]="product.name" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
 
     <mat-form-field class="details-form-field" appearance="outline">
       <mat-label>Manufacturer</mat-label>
-      <input matInput autocomplete="off">
+      <input matInput autocomplete="off" [(ngModel)]="product.manufacturer.name" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
 
     <mat-form-field class="details-form-field" appearance="outline">
       <mat-label>Price</mat-label>
-      <input matInput autocomplete="off">
+      <input type="number" matInput autocomplete="off" [(ngModel)]="product.price"
+        [ngModelOptions]="{standalone: true}">
     </mat-form-field>
 
     <mat-form-field class="details-form-field" appearance="outline">
       <mat-label>Expiry Date</mat-label>
-      <input matInput [matDatepicker]="expiryDate" autocomplete="off">
+      <input matInput [matDatepicker]="expiryDate" [(ngModel)]="product.expiryDate"
+        [ngModelOptions]="{standalone: true}" autocomplete="off">
       <mat-datepicker-toggle matSuffix [for]="expiryDate"></mat-datepicker-toggle>
       <mat-datepicker #expiryDate></mat-datepicker>
     </mat-form-field>
   </form>
 
   <div class="action-buttons-container">
-    <button mat-raised-button class="save-button">Save</button>
+    <button mat-raised-button class="save-button" (click)="save()">Save</button>
     <button mat-raised-button class="cancel-button" (click)="cancel()">Cancel</button>
   </div>
 </section>
