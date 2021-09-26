@@ -10,4 +10,8 @@ export const GET_PRODUCT = createAction(IProductStateEnums.GET_PRODUCT, props<{ 
 export const GET_PRODUCT_SUCCESS = createAction(IProductStateEnums.GET_PRODUCT_SUCCESS, props<{ payload: IProduct }>());
 export const GET_PRODUCT_FAILED = createAction(IProductStateEnums.GET_PRODUCT_FAILED, props<{ payload: any }>());
 
+export const DELETE_PRODUCT = createAction(IProductStateEnums.DELETE_PRODUCT, props<{ id: string }>());
+export const DELETE_PRODUCT_SUCCESS = createAction(IProductStateEnums.DELETE_PRODUCT_SUCCESS);
+export const DELETE_PRODUCT_FAILED = createAction(IProductStateEnums.DELETE_PRODUCT_FAILED);
+
 export const CLEAR_STATE = createAction(IProductStateEnums.CLEAR_STATE);

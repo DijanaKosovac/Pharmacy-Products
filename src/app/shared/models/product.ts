@@ -10,10 +10,13 @@ export class IProduct {
     this.name = obj && obj.name || null;
     this.manufacturer = obj && obj.manufacturer || {};
     this.price = obj && obj.price || null;
-    this.expiryDate = obj && obj.expiryDate || null;
+    this.expiryDate = obj && parseDate(obj.expiryDate) || null;
   }
 }
 
+function parseDate(val) {
+  return val.toDate();
+}
 export class IManufacturer {
   id: string;
   name: string;

@@ -4,7 +4,7 @@ import { IProduct } from 'src/app/shared/models/product';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ProductsService } from '../products.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/shared/store/state';
 import { GET_PRODUCT } from '../store/products.actions';
@@ -32,7 +32,7 @@ export class ProductDetailsComponent implements OnInit {
       } else {
         this.isAddNewProduct = false;
         this.productId = id;
-        this.store.dispatch(GET_PRODUCT({ id: this.productId }))
+        this.store.dispatch(GET_PRODUCT({ id: this.productId }));
       }
     });
     this.getProduct();
@@ -47,20 +47,18 @@ export class ProductDetailsComponent implements OnInit {
   getProduct() {
     this.store.select(selectProduct).pipe(takeUntil(this.ngUnsubscribe)).subscribe(data => {
       this.product = cloneDeep(data);
-    })
+    });
   }
 
   save() {
     if (this.isAddNewProduct) {
-      this.productService.saveNewProduct({ ...this.product }).then(res => {
-      })
+      this.productService.saveNewProduct({ ...this.product });
     } else {
-      this.productService.updateProduct(this.productId, this.product)
+      this.productService.updateProduct(this.productId, this.product);
     }
   }
 
   cancel() {
     this.location.back();
   }
-
 }

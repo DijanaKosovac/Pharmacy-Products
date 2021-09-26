@@ -2,7 +2,7 @@ import { IProduct } from 'src/app/shared/models/product';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,16 +14,16 @@ export class ProductsService {
     return this.fireStoreService.collection("Products").snapshotChanges().pipe(
       map(action => {
         return action.map(
-          c => ({
-            id: c.payload.doc.id,
-            ...c.payload.doc.data() as {}
+          item => ({
+            id: item.payload.doc.id,
+            ...item.payload.doc.data() as {}
           } as IProduct)
         )
       })
     );
   }
 
-  getProduct(productId: string) {
+  getProduct(productId: string): Observable<IProduct> {
     return this.fireStoreService.collection("Products").doc(productId).get().pipe(
       map(action => {
         let product = new IProduct(action.data());
@@ -39,12 +39,24 @@ export class ProductsService {
   saveNewProduct(product: IProduct) {
     let id = this.fireStoreService.createId();
     product.manufacturer.id = id;
-    return this.fireStoreService.collection("Products").add(Object.assign({}, product)).then(function (res) {
+    // return from(this.fireStoreService.collection("Products").add(Object.assign({}, product))).pipe(
+    //   map(data => {
+    //   })
+    // )
+    let prommise = this.fireStoreService.collection("Products").add(Object.assign({}, product)).then(function (res) {
       return res;
     })
+    return from(prommise).pipe(
+      map(data => {
+        console.log(data);
+      })
+    )
+    // return this.fireStoreService.collection("Products").add(Object.assign({}, product)).then(function (res) {
+    //   return res;
+    // })
   }
 
-  deleteProduct(productId: string) {
-    return this.fireStoreService.collection("Products").doc(productId).delete();
+  deleteProduct(productId: string): Observable<void> {
+    return from(this.fireStoreService.collection("Products").doc(productId).delete());
   }
 }

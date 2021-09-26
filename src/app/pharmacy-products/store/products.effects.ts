@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { ProductsService } from '../products.service';
-import { GET_PRODUCT, GET_PRODUCTS, GET_PRODUCTS_FAILED, GET_PRODUCT_FAILED } from './products.actions';
+import { GET_PRODUCT, GET_PRODUCTS, GET_PRODUCTS_FAILED, GET_PRODUCT_FAILED, DELETE_PRODUCT, DELETE_PRODUCT_FAILED } from './products.actions';
 import { of } from 'rxjs';
 import { IProductStateEnums } from 'src/app/shared/store/state-enums';
 import { catchError, map, switchMap } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 
 export class ProductsEffects {
 
-  loadProducts$ = createEffect(() => this.actions$.pipe(
+  getProducts$ = createEffect(() => this.actions$.pipe(
     ofType(GET_PRODUCTS),
     switchMap(action => this.productsService.getProducts().pipe(
       map(data => ({ type: IProductStateEnums.GET_PRODUCTS_SUCCESS, payload: data })),
@@ -25,9 +25,16 @@ export class ProductsEffects {
     )
   ));
 
+  deleteProduct$ = createEffect(() => this.actions$.pipe(
+    ofType(DELETE_PRODUCT),
+    switchMap(action => this.productsService.deleteProduct(action.id).pipe(
+      map(data => ({ type: IProductStateEnums.DELETE_PRODUCT_SUCCESS, payload: data })),
+      catchError(error => of(DELETE_PRODUCT_FAILED())))
+    )
+  ));
+
   constructor(
     private actions$: Actions,
     private productsService: ProductsService
-
   ) { }
 }

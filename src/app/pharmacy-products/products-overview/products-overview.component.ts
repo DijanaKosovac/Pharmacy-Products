@@ -1,3 +1,4 @@
+import { DELETE_PRODUCT } from './../store/products.actions';
 import { IProduct } from './../../shared/models/product';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
@@ -26,7 +27,6 @@ export class ProductsOverviewComponent implements OnInit {
   constructor(private productService: ProductsService, private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.store.dispatch(GET_PRODUCTS());
     this.getProducts();
   }
 
@@ -36,17 +36,13 @@ export class ProductsOverviewComponent implements OnInit {
   }
 
   getProducts() {
+    this.store.dispatch(GET_PRODUCTS());
     this.store.select(selectProductsList).pipe(takeUntil(this.ngUnsubscribe)).subscribe(data => {
-      if (data.length) {
-        this.listData = new MatTableDataSource(data);
-      }
+      this.listData = new MatTableDataSource(data);
     })
   }
 
   deleteProduct(id: string) {
-    this.productService.deleteProduct(id).then(data => {
-
-    })
+    this.store.dispatch(DELETE_PRODUCT({ id: id }));
   }
-
 }
