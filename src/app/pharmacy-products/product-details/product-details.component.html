@@ -8,7 +8,8 @@
 
     <mat-form-field class="details-form-field" appearance="outline">
       <mat-label>Manufacturer</mat-label>
-      <mat-select disableOptionCentering [(ngModel)]="product.manufacturer" [ngModelOptions]="{standalone: true}">
+      <mat-select disableOptionCentering [(ngModel)]="product.manufacturer" [ngModelOptions]="{standalone: true}"
+        [compareWith]="compareObjects">
         <mat-option [value]="manufacturer" *ngFor="let manufacturer of manufacturers">{{ manufacturer?.name }}
         </mat-option>
       </mat-select>
@@ -23,14 +24,16 @@
     <mat-form-field class="details-form-field" appearance="outline">
       <mat-label>Expiry Date</mat-label>
       <input matInput [matDatepicker]="expiryDate" [(ngModel)]="product.expiryDate"
-        [ngModelOptions]="{standalone: true}" autocomplete="off" disabled>
+        [ngModelOptions]="{standalone: true}" [min]="minExpiryDate" autocomplete="off" disabled>
       <mat-datepicker-toggle matSuffix [for]="expiryDate"></mat-datepicker-toggle>
       <mat-datepicker #expiryDate disabled="false"></mat-datepicker>
     </mat-form-field>
   </form>
 
   <div class="action-buttons-container">
-    <button mat-raised-button class="save-button" (click)="save()">Save</button>
+    <button mat-raised-button class="save-button"
+      [disabled]="!product.name || !product.price || !product.expiryDate || !product.manufacturer"
+      (click)="save()">Save</button>
     <button mat-raised-button class="cancel-button" (click)="cancel()">Cancel</button>
   </div>
 </section>

@@ -21,6 +21,7 @@ export class ProductDetailsComponent implements OnInit {
   product: IProduct = new IProduct();
   isAddNewProduct: boolean = false;
   productId: string;
+  minExpiryDate: Date = new Date();
   ngUnsubscribe: Subject<any> = new Subject();
   manufacturers: IManufacturer[] = [
     {
@@ -75,5 +76,10 @@ export class ProductDetailsComponent implements OnInit {
 
   cancel() {
     this.location.back();
+  }
+
+  compareObjects(o1: IManufacturer, o2: IManufacturer) {
+    let value = o1.name === o2.name && o1.id === o2.id;
+    return value;
   }
 }
