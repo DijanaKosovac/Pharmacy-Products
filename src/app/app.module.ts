@@ -22,6 +22,7 @@ import { ProductsEffects } from './pharmacy-products/store/products.effects';
 // Services
 import { ProductsService } from './pharmacy-products/products.service';
 import { DatePipe } from '@angular/common';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,10 @@ import { DatePipe } from '@angular/common';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
   ],
-  providers: [ProductsService, DatePipe],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-CH' },
+    ProductsService,
+    DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ParseDatePipe } from './pipes/parse-date.pipe';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     ParseDatePipe
@@ -27,6 +28,7 @@ import { ParseDatePipe } from './pipes/parse-date.pipe';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule
   ],
   exports: [
     MatSidenavModule,
@@ -39,7 +41,8 @@ import { ParseDatePipe } from './pipes/parse-date.pipe';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ParseDatePipe
+    ParseDatePipe,
+    MatSelectModule
   ]
 })
 export class SharedModule { }

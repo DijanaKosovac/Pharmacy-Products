@@ -33,30 +33,29 @@ export class ProductsService {
   }
 
   updateProduct(productId: string, product: IProduct) {
-    return this.fireStoreService.doc("Products/" + productId).update(Object.assign({}, product));
+    let promise = this.fireStoreService.doc("Products/" + productId).update(Object.assign({}, product));
+    return from(promise).pipe(
+      map(data => {
+        return data;
+      })
+    )
   }
 
   saveNewProduct(product: IProduct) {
-    let id = this.fireStoreService.createId();
-    product.manufacturer.id = id;
-    // return from(this.fireStoreService.collection("Products").add(Object.assign({}, product))).pipe(
-    //   map(data => {
-    //   })
-    // )
-    let prommise = this.fireStoreService.collection("Products").add(Object.assign({}, product)).then(function (res) {
-      return res;
-    })
-    return from(prommise).pipe(
+    let promise = this.fireStoreService.collection("Products").add(Object.assign({}, product));
+    return from(promise).pipe(
       map(data => {
-        console.log(data);
+        return data;
       })
     )
-    // return this.fireStoreService.collection("Products").add(Object.assign({}, product)).then(function (res) {
-    //   return res;
-    // })
   }
 
   deleteProduct(productId: string): Observable<void> {
-    return from(this.fireStoreService.collection("Products").doc(productId).delete());
+    let promise = this.fireStoreService.collection("Products").doc(productId).delete();
+    return from(promise).pipe(
+      map(data => {
+        return data;
+      })
+    )
   }
 }

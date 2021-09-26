@@ -1,4 +1,5 @@
-import { CLEAR_STATE } from './../store/products.actions';
+import { IManufacturer } from './../../shared/models/product';
+import { CLEAR_STATE, SAVE_PRODUCT, UPDATE_PRODUCT } from './../store/products.actions';
 import { selectProduct } from './../../shared/store/state';
 import { IProduct } from 'src/app/shared/models/product';
 import { Component, OnInit } from '@angular/core';
@@ -21,6 +22,20 @@ export class ProductDetailsComponent implements OnInit {
   isAddNewProduct: boolean = false;
   productId: string;
   ngUnsubscribe: Subject<any> = new Subject();
+  manufacturers: IManufacturer[] = [
+    {
+      id: "1", name: "Galenika"
+    },
+    {
+      id: "2", name: "Hemofarm"
+    },
+    {
+      id: "3", name: "Pharmanova"
+    },
+    {
+      id: "4", name: "Panfarma"
+    },
+  ]
 
   constructor(private location: Location, private productService: ProductsService, private route: ActivatedRoute, private store: Store<AppState>) { }
 
@@ -52,9 +67,9 @@ export class ProductDetailsComponent implements OnInit {
 
   save() {
     if (this.isAddNewProduct) {
-      this.productService.saveNewProduct({ ...this.product });
+      this.store.dispatch(SAVE_PRODUCT({ product: this.product }));
     } else {
-      this.productService.updateProduct(this.productId, this.product);
+      this.store.dispatch(UPDATE_PRODUCT({ productId: this.productId, product: this.product }));
     }
   }
 
