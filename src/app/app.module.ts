@@ -23,6 +23,8 @@ import { ProductsEffects } from './pharmacy-products/store/products.effects';
 import { ProductsService } from './pharmacy-products/products.service';
 import { DatePipe } from '@angular/common';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     NavigationComponent,
     ShellComponent,
     ProductsOverviewComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    StatisticsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

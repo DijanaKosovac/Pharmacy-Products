@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { ProductsService } from '../products.service';
-import { GET_PRODUCT, GET_PRODUCTS, GET_PRODUCTS_FAILED, GET_PRODUCT_FAILED, DELETE_PRODUCT, DELETE_PRODUCT_FAILED, SAVE_PRODUCT, SAVE_PRODUCT_SUCCESS, SAVE_PRODUCT_FAILED, UPDATE_PRODUCT, UPDATE_PRODUCT_FAILED } from './products.actions';
+import { GET_PRODUCT, GET_PRODUCTS, GET_PRODUCTS_FAILED, GET_PRODUCT_FAILED, DELETE_PRODUCT, DELETE_PRODUCT_FAILED, SAVE_PRODUCT, SAVE_PRODUCT_FAILED, UPDATE_PRODUCT, UPDATE_PRODUCT_FAILED } from './products.actions';
 import { of } from 'rxjs';
 import { IProductStateEnums } from 'src/app/shared/store/state-enums';
 import { catchError, map, switchMap } from 'rxjs/operators';

@@ -2,7 +2,6 @@ import { DELETE_PRODUCT } from './../store/products.actions';
 import { IProduct } from './../../shared/models/product';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ProductsService } from '../products.service';
 import { Store } from '@ngrx/store';
 import { AppState, selectProductsList } from 'src/app/shared/store/state';
 import { GET_PRODUCTS } from '../store/products.actions';
@@ -24,7 +23,7 @@ export class ProductsOverviewComponent implements OnInit {
     'expiryDate',
   ];
 
-  constructor(private productService: ProductsService, private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.getProducts();

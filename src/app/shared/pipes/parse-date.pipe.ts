@@ -8,7 +8,7 @@ export class ParseDatePipe implements PipeTransform {
 
   constructor(private datePipe: DatePipe) { }
 
-  transform(value: any): unknown {
+  transform(value: any): Date {
     if (value) {
       value = this.datePipe.transform(value.toDate(), 'dd.MM.yyyy');
     }

@@ -10,7 +10,11 @@
           <mat-icon class="sidenav-icon" mat-list-icon>medication</mat-icon>
           <p class="sidenav-title" matLine *ngIf="isExpanded">Products</p>
         </a>
-        <a class="sidenav-item" mat-list-item>
+        <a class="sidenav-item" mat-list-item [routerLink]="['statistics']">
+          <mat-icon class="sidenav-icon" mat-list-icon>analytics</mat-icon>
+          <p class="sidenav-title" matLine *ngIf="isExpanded">Statistics</p>
+        </a>
+        <a class="sidenav-item" mat-list-item [routerLink]="['about']">
           <mat-icon class="sidenav-icon" mat-list-icon>info</mat-icon>
           <p class="sidenav-title" matLine *ngIf="isExpanded">About</p>
         </a>

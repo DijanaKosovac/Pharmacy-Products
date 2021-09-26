@@ -4,7 +4,6 @@ import { selectProduct } from './../../shared/store/state';
 import { IProduct } from 'src/app/shared/models/product';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ProductsService } from '../products.service';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/shared/store/state';
@@ -38,7 +37,7 @@ export class ProductDetailsComponent implements OnInit {
     },
   ]
 
-  constructor(private location: Location, private productService: ProductsService, private route: ActivatedRoute, private store: Store<AppState>) { }
+  constructor(private location: Location, private route: ActivatedRoute, private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -78,8 +77,8 @@ export class ProductDetailsComponent implements OnInit {
     this.location.back();
   }
 
-  compareObjects(o1: IManufacturer, o2: IManufacturer) {
-    let value = o1.name === o2.name && o1.id === o2.id;
+  compareObjects(option: IManufacturer, manufacturer: IManufacturer) {
+    let value = option.name === manufacturer.name && option.id === manufacturer.id;
     return value;
   }
 }
